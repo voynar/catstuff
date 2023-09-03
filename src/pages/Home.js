@@ -43,17 +43,17 @@ export const Home = () => {
             <div className="p-6">
                 <ChangeProfile />
             </div> */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
+            <div className="max-w-sm border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
                 <div className="p-5">
                     <div>
                         <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 text-white">CatFact</h5>
                     </div>
                     <div>
-                        <button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button" onClick={refetch}>Get Fact!</button>
+                        <button className="text-gray-900 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button" onClick={refetch}>Get Fact!</button>
                         <p className="text-white p-4 text-2xl">{catData.fact}</p>
                     </div>
                     <div>
-                        <button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button" onClick={getRandomImage}>GetNewCat</button>
+                        <button className="text-gray-900 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button" onClick={getRandomImage}>GetNewCat</button>
                         <div className='catDiv'>
                             <img className="catImg p-4" alt="Cat Pic" src={imgURL} />
                         </div> 
@@ -66,20 +66,6 @@ export const Home = () => {
         //     <div className="p-6">
         //         <ChangeProfile />
         //     </div>
-            
-        //     <div>
-        //         <button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button" onClick={refetch}>Get Fact!</button>
-        //         <p className="p-4 text-2xl">{catData.fact}</p>
-        //     </div>
-            
-        //     <div>
-        //         <button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button" onClick={getRandomImage}>GetNewCat</button>
-        //         <div className='catDiv'>
-        //             <img className="catImg p-4" alt="Cat Pic" src={imgURL} />
-        //         </div> 
-        //     </div>
-            
-        // </main>
     )
 }
 
