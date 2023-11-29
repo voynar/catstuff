@@ -18,7 +18,7 @@ export const Home = () => {
     const getRandomImage = async () => {
         try {
             const response = await axios.get("https://cataas.com/cat?json=true");
-            const catId = response.data.url;
+            const catId = response.data._id;
             console.log(catId);
             setImgURL(`https://cataas.com/${catId}`);
         } catch (error) {
