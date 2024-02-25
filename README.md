@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+## CatApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### This is a simple React application that fetches data from two API endpoints:
+  :octocat: [CatAss](https://cataas.com/cat?json=true) & [CatFact](https://catfact.ninja/fact) :heart_eyes_cat:
 
-## Available Scripts
+CatApp utilizes the `@tanstack/react-query` and `axios` libraries to efficiently manage asynchronous data fetching.
+  - The `QueryClient` and `QueryClientProvider` from this library are key in handling queries and caching data.
+  - The `axios` library is used for making HTTP requests to fetch cat facts and images.
 
-In the project directory, you can run:
+For smooth navigation within the app, I incorporated the `react-router-dom` library.
+  - The `BrowserRouter, Routes, Route` components facilitate a structured navigation.
 
-### `npm start`
+I used `tailwindcss` for the styling :v:NOT a requirement!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+_Setup your project_:
+```
+  $ npx create-react-app app_name
+  $ cd app_name && npm install react axios react-router-dom
+  $ npm install -D tailwindcss
+  $ npx tailwindcss init
+```
+_Update tailwind.config.js_:
+```
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+      content: ["./src/**/*.{html,js}"],
+      theme: {
+          extend: {},
+      },
+      plugins: [],
+  }
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The `useEffect` hook is employed to ensure that the `getRandomImage()` function is called when the component mounts.
+```
+  useEffect(() => {
+      getRandomImage();
+  }, []);
+```
 
-### `npm test`
+I modularized the code by creating a separate `NavBar.js` component, that is also `sticky`!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When you're ready for production, run:
+```
+  $ cd project_root/
+  $ npm run build
+```
 
-### `npm run build`
+From here you can do whatever. I wanted to try out Netlify, especially the CLI interface.
+```
+  $ npm install netlify-cli -g
+```
+Authenticate:
+```
+  $ netlify login
+```
+Sample output:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Logging into your Netlify account...
+> 
+> Opening <ticket_auth>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> ⠦ Waiting for authorization...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+... and in your browser, Authorize. You'll see:
+> :warning: An application named Netlify CLI is asking for permission to access Netlify on your behalf.
 
-### `npm run eject`
+If successfull, you'll see:
+> You are now logged into your Netlify account!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Deploy the `build/` directory:
+```
+  $ netlify deploy --dir=build
+```
+> This folder isn't linked to a site yet
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> ? What would you like to do? (Use arrow keys)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> ❯ Link this directory to an existing site
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+>   +  Create & configure a new site 
 
-## Learn More
+Create & configure a new site! Enter your `Team` and `Site` names. This will create a website draft. Now deploy live:
+```
+  $ netlify deploy --prod --dir=build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### I :green_heart::orange_heart: :cat:'s!
