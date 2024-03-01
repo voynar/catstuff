@@ -1,103 +1,83 @@
 ## CatApp
 
-### This is a simple React application that fetches data from two API endpoints:
-  :octocat: [CatAss](https://cataas.com/cat?json=true) & [CatFact](https://catfact.ninja/fact) :heart_eyes_cat:
+A simple, cat-friendly web app using the React framework.
 
-CatApp utilizes the `@tanstack/react-query` and `axios` libraries to efficiently manage asynchronous data fetching.
-  - The `QueryClient` and `QueryClientProvider` from this library are key in handling queries and caching data.
-  - The `axios` library is used for making HTTP requests to fetch cat facts and images.
+It fetches data from two API endpoints: :octocat: [CatFact](https://catfact.ninja/fact) & [CatAss](https://cataas.com/cat?json=true) :heart_eyes_cat:
 
-For smooth navigation within the app, I incorporated the `react-router-dom` library.
-  - The `BrowserRouter, Routes, Route` components facilitate a structured navigation.
+The `react-query` library is imported to manage queries and their states globally, as well as manage data fetching:
+  - The App component is wrapped with `QueryClientProvider`, passing the created client as a prop.
+  - This makes the `QueryClient` instance available to all components within the provider.
 
-I used `tailwindcss` for the styling :v:NOT a requirement!
+To allow manual refreshing of the cat fact data, I added a button to trigger the `refetch` function, which is provided by the `useQuery` hook.
 
-_Setup your project_:
+A couple of `if` statements in `Home.js` to handle errors and page loading:
 ```
-  $ npx create-react-app app_name
-  $ cd app_name && npm install react axios react-router-dom
-  $ npm install -D tailwindcss
-  $ npx tailwindcss init
-```
-_Update tailwind.config.js_:
-```
-  /** @type {import('tailwindcss').Config} */
-  module.exports = {
-      content: ["./src/**/*.{html,js}"],
-      theme: {
-          extend: {},
-      },
-      plugins: [],
+  import Loading from '../assets/loading.gif';
+    // rest of code
+    // ...
+  if (isError) {
+    return <h2> Sorry, there was an Error! </h2>
+  }
+  if (isLoading) {
+    return <p><img src={Loading} alt='loading gif' /></p>
   }
 ```
 
-The `useEffect` hook is employed to ensure that the `getRandomImage()` function is called when the component mounts.
+As in any project, the styling is wide open! I was playing aroung with `tailwindcss`, so I tried it in this project.
+
+Basic setup: (Linux/Mac)
 ```
-  useEffect(() => {
-      getRandomImage();
-  }, []);
+  $ npx create-react-app cat-app
+  $ cd cat-app/
+  $ npm install axios react-router-dom @tanstack/react-query
+  $ npm install -D tailwindcss
+  $ npx tailwindcss init
+```
+Configure your template path:
+```
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+    content: ["./src/**/*.{html,js}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }
+```
+Add the Tailwind directive to `index.css`:
+```
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+```
+Check out the code for the different classes I used, for example:
+```
+  className="sticky top-0 z-50 border-gray-200 bg-gray-900"
 ```
 
-I modularized the code by creating a separate `NavBar.js` component, that is also `sticky`!
-
-When you're ready for production, run:
+Obviously once the `npm build` process is complete, you can do whatever. I experimented with Netlify:
 ```
-  $ cd project_root/
+  $ npm install -g netlify-cli
+  $ cd /path/to/cat-app/
   $ npm run build
-```
-
-From here you can do whatever. I wanted to try out Netlify, especially the CLI interface.
-```
-  $ npm install netlify-cli -g
-```
-Authenticate:
-```
   $ netlify login
 ```
-Sample output:
-
-> Logging into your Netlify account...
-> 
-> Opening <ticket_auth>
-
-> ⠦ Waiting for authorization...
-
-... and in your browser, Authorize. You'll see:
+A browser window will pop up asking for authorization:
 > :warning: An application named Netlify CLI is asking for permission to access Netlify on your behalf.
-
-If successfull, you'll see:
-> You are now logged into your Netlify account!
-
-Deploy the `build/` directory:
+> 
+> :information_source: You've granted access to an application named Netlify CLI.
+In your terminal, you'll see:
 ```
-  $ netlify deploy --dir=build
+Logging into your Netlify account...
+Opening https://app.netlify.com/authorize?response_type=ticket&ticket=<ticket_#>
+
+You are now logged into your Netlify account!
 ```
-> This folder isn't linked to a site yet
-
-> ? What would you like to do? (Use arrow keys)
-
-> ❯ Link this directory to an existing site
-
->   +  Create & configure a new site 
-
-Create & configure a new site! Enter your `Team` and `Site` names. This will create a website draft. Now deploy live:
+You can link a GitHub repository, or deploy it manually:
 ```
+  $ netlify init
+  $ netlify deploy
   $ netlify deploy --prod --dir=build
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### I :green_heart::orange_heart: :cat:'s!
+### _Enjoy!_
